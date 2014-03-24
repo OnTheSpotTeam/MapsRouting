@@ -22,7 +22,8 @@ public class Routing extends AsyncTask<LatLng, Void, Route>
 {
   protected ArrayList<RoutingListener> _aListeners;
   protected TravelMode _mTravelMode;
-
+  private LatLng start;
+  private LatLng end;
   public enum TravelMode {
     BIKING("biking"),
     DRIVING("driving"),
@@ -65,7 +66,7 @@ public class Routing extends AsyncTask<LatLng, Void, Route>
   {
     for (RoutingListener mListener: _aListeners)
     {
-      mListener.onRoutingSuccess(mOptions);
+      mListener.onRoutingSuccess(mOptions, start, end);
     }
   }
 
@@ -82,7 +83,8 @@ public class Routing extends AsyncTask<LatLng, Void, Route>
       {
 	    if (mPoint == null) return null;
 	  }
-
+	  start = aPoints[0];
+	  end = aPoints[1];
     return new GoogleParser(constructURL(aPoints)).parse();
 	}
 
