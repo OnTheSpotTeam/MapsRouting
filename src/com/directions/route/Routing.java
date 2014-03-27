@@ -24,6 +24,7 @@ public class Routing extends AsyncTask<LatLng, Void, Route>
   protected TravelMode _mTravelMode;
   private LatLng start;
   private LatLng end;
+  private int routeN;
   public enum TravelMode {
     BIKING("biking"),
     DRIVING("driving"),
@@ -40,10 +41,11 @@ public class Routing extends AsyncTask<LatLng, Void, Route>
   }
 
 
-	public Routing(TravelMode mTravelMode)
+	public Routing(TravelMode mTravelMode, int rn)
 	{
         this._aListeners = new ArrayList<RoutingListener>();
         this._mTravelMode = mTravelMode;
+        routeN = rn;
 	}
 
   public void registerListener(RoutingListener mListener) {
@@ -66,7 +68,7 @@ public class Routing extends AsyncTask<LatLng, Void, Route>
   {
     for (RoutingListener mListener: _aListeners)
     {
-      mListener.onRoutingSuccess(mOptions, start, end);
+      mListener.onRoutingSuccess(mOptions, start, end, routeN);
     }
   }
 

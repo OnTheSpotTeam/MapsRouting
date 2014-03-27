@@ -15,11 +15,12 @@ public class Route {
     private String country;
     private int length;
     private String polyline;
-
+  
     public Route() {
             points = new ArrayList<LatLng>();
             segments = new ArrayList<Segment>();
     }
+    
 
     public void addPoint(final LatLng p) {
             points.add(p);
