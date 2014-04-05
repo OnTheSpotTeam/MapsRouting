@@ -6,6 +6,7 @@ import com.google.android.gms.maps.model.LatLng;
 public class Segment {
     /** Points in this segment. **/
     private LatLng start;
+    private LatLng end;
     /** Turn instruction to reach next segment. **/
     private String instruction;
     /** Length of segment. **/
@@ -21,6 +22,11 @@ public class Segment {
     public Segment() {
     }
 
+    public void setEnd(final LatLng end)
+    {
+    	this.end = end;
+    }
+    
 
     public void setText(final String inText){
     	this.text = inText;
@@ -53,7 +59,7 @@ public class Segment {
      * @param point GeoPoint to add.
      */
 
-    public void setPoint(final LatLng point) {
+    public void setStart(final LatLng point) {
             start = point;
     }
 
